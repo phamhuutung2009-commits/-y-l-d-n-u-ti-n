@@ -1,2 +1,146 @@
-# -y-l-d-n-u-ti-n
-đây là dự án đầu tiên
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christmas Gift</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('https://st.quantrimang.com/photos/image/2021/12/02/Background-Giang-sinh-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: #4b2e0f;
+        }
+
+        .overlay {
+            padding-top: 40px;
+            background: rgba(255,255,255,0.6);
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtext {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .input-box {
+            width: 85%;
+            max-width: 450px;
+            padding: 15px;
+            border-radius: 30px;
+            border: 2px solid #c97a2b;
+            font-size: 18px;
+            outline: none;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            background: #d35400;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+
+        .card {
+            width: 80%;
+            max-width: 420px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, #fff8e1, #ffe8b3);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-to {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .card-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-msg {
+            font-size: 18px;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+        <h1>🎄 Chúc Mừng Giáng Sinh 🎁</h1>
+        <p class="subtext">Chúc bạn một mùa Giáng sinh an lành, ấm áp và đầy phép màu ✨</p>
+
+        <!-- Ô nhập tên -->
+        <input id="nameInput" class="input-box" type="text" placeholder="Nhập tên của bạn...">
+        <br>
+
+        <!-- Nút mở thiệp -->
+        <button class="btn" onclick="showCard()">Xem thiệp của bạn 🎁</button>
+
+        <!-- Khung thiệp -->
+        <div class="card" id="card">
+            <div class="card-title">MERRY CHRISTMAS</div>
+            <div class="card-to">Gửi:</div>
+            <div class="card-name" id="cardName"></div>
+            <div class="card-msg">Lời chúc sẽ hiện ở đây ❤️</div>
+        </div>
+    </div>
+
+    <script>
+        const wishes = [
+            "Chúc bạn Giáng Sinh an lành, ấm áp và luôn mỉm cười mỗi ngày! 🎄✨",
+            "Mong mùa Noel đem đến cho bạn thật nhiều yêu thương và hạnh phúc! 💖",
+            "Chúc bạn đón một mùa Giáng Sinh tròn đầy niềm vui và điều may mắn! 🎁",
+            "Hy vọng tất cả ước mơ của bạn sẽ thành sự thật trong mùa Noel này! ⭐",
+            "Giáng Sinh vui vẻ! Chúc bạn luôn bình an và hạnh phúc bên những người thương yêu. ❄️",
+            "Chúc bạn nhận được nhiều món quà tuyệt vời — cả hiện tại và trong lòng ❤️",
+            "Mong bạn có một Giáng Sinh ấm cúng, ngọt ngào và tràn đầy phép màu! 🎅✨",
+            "Một mùa Noel an yên, một năm mới rực rỡ dành cho bạn! 🎆",
+            "Chúc bạn mùa Giáng Sinh đầy tiếng cười và khoảnh khắc đáng nhớ 🎄😊",
+            "Giáng Sinh là mùa của yêu thương — mong bạn luôn nhận được thật nhiều điều tốt đẹp 💝"
+        ];
+
+        function showCard() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) return alert('Bạn chưa nhập tên!');
+
+            document.getElementById('cardName').innerText = name;
+
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            document.querySelector('.card-msg').innerHTML = randomWish;
+
+            document.getElementById('card').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
